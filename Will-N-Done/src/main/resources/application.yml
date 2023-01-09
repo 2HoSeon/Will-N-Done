@@ -1,0 +1,42 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+      
+spring:
+  profiles:
+    active: local
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:orcl
+    username: C##Todo
+    password: 1234
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 10
+      max-lifetime: 1800000
+  messages:
+    basename: massages.validation
+    encoding: UTF-8
+
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+      
+mybatis:
+  type-aliases-package: com.hoseon.todo.**.vo
+  mapper-locations: com/hoseon/todo/**/dao/*.xml
+  
+logging:
+  level:
+    '[com.hoseon]': debug
